@@ -5,7 +5,7 @@ services:
   # Confluent containers
   ##
   zookeeper:
-    image: confluentinc/cp-zookeeper:5.0.0-beta30
+    image: confluentinc/cp-zookeeper:4.1.1
     hostname: zookeeper
     container_name: zookeeper
     ports:
@@ -15,7 +15,7 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
 
   broker:
-    image: confluentinc/cp-enterprise-kafka:5.0.0-beta30
+    image: confluentinc/cp-enterprise-kafka:4.1.1
     hostname: broker
     container_name: broker
     depends_on:
@@ -38,7 +38,7 @@ services:
       CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
 
   schema-registry:
-    image: confluentinc/cp-schema-registry:5.0.0-beta30
+    image: confluentinc/cp-schema-registry:4.1.1
     hostname: schema-registry
     container_name: schema-registry
     depends_on:
@@ -51,7 +51,7 @@ services:
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: 'zookeeper:2181'
 
   connect:
-    image: confluentinc/cp-kafka-connect:5.0.0-beta30
+    image: confluentinc/cp-kafka-connect:4.1.1
     hostname: connect
     container_name: connect
     depends_on:
@@ -99,7 +99,10 @@ services:
       - CLUSTER_NAME=test
     env_file:
       - ./hadoop.env
-  
+    ports:
+        - 50070:50070
+        - 8020:8020
+
   resourcemanager:
     image: bde2020/hadoop-resourcemanager:1.1.0-hadoop2.7.1-java8
     container_name: resourcemanager
@@ -109,6 +112,8 @@ services:
       - datanode2
     env_file:
       - ./hadoop.env
+    ports:
+      - 8088:8088
   
   historyserver:
     image: bde2020/hadoop-historyserver:1.1.0-hadoop2.7.1-java8
@@ -121,6 +126,8 @@ services:
       - hadoop_historyserver:/hadoop/yarn/timeline
     env_file:
       - ./hadoop.env
+    ports:
+      - 8188:8188
   
   nodemanager1:
     image: bde2020/hadoop-nodemanager:1.1.0-hadoop2.7.1-java8
@@ -131,6 +138,8 @@ services:
       - datanode2
     env_file:
       - ./hadoop.env
+    ports:
+      - 8042:8042
   
   datanode1:
     image: bde2020/hadoop-datanode:1.1.0-hadoop2.7.1-java8
@@ -141,6 +150,8 @@ services:
       - hadoop_datanode1:/hadoop/dfs/data
     env_file:
       - ./hadoop.env
+    ports:
+      - 50175:50075
   
   datanode2:
     image: bde2020/hadoop-datanode:1.1.0-hadoop2.7.1-java8
@@ -151,6 +162,8 @@ services:
       - hadoop_datanode2:/hadoop/dfs/data
     env_file:
       - ./hadoop.env
+    ports:
+      - 50275:50075
   
   datanode3:
     image: bde2020/hadoop-datanode:1.1.0-hadoop2.7.1-java8
@@ -161,6 +174,8 @@ services:
       - hadoop_datanode3:/hadoop/dfs/data
     env_file:
       - ./hadoop.env
+    ports:
+      - 50375:50075
 
 volumes:
   hadoop_namenode:
