@@ -9,6 +9,8 @@ Frameworks to evaluate:
 
 ## Kafka HDFS Connector
 
+> Source: https://docs.confluent.io/current/connect/connect-hdfs/docs/hdfs_connector.html
+
 This Connector has been implemented and is supported by Confluent.
 
 It supports HDFS as a Sink (only).
@@ -100,3 +102,7 @@ Test with Avro Tools:
 ```bash
 java -jar avro-tools-1.8.2.jar tojson /tmp/test_hdfs+0+0000000000+0000000002.avro
 ```
+
+## Alpakka HDFS Connector
+
+> Source: https://developer.lightbend.com/docs/alpakka/current/hdfs.html
