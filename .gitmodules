@@ -1,0 +1,8 @@
+[submodule "docker-hadoop"]
+	path = docker-hadoop
+	url = https://github.com/big-data-europe/docker-hadoop
+	branch = master
+[submodule "docker-cp"]
+	path = docker-cp
+	url = https://github.com/confluentinc/cp-docker-images
+	branch = master
