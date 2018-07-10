@@ -1,0 +1,11 @@
+{
+    "type":"record",
+    "namespace":"io.github.jeqo.poc.schema.avro",
+    "name":"MyOtherRecord",
+    "fields": [
+        {
+            "name":"f1",
+            "type":"string"
+        }
+    ]
+}
