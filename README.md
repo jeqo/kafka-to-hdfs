@@ -70,3 +70,33 @@ connect            | [2018-07-10 11:36:09,177] INFO Committed hdfs://namenode:80
 
 * Validate HDFS Avro file
 
+Connect to `namenode` container:
+
+```bash
+docker-compose exec namenode bash
+```
+
+Download Avro Tools to deserialize messages:
+
+```bash
+curl -o avro-tools-1.8.2.jar http://mirror.metrocast.net/apache/avro/avro-1.8.2/java/avro-tools-1.8.2.jar
+```
+
+Check HDFS file is created:
+
+```bash
+hadoop fs -ls /topics/test_hdfs/partition=0
+```
+
+Copy file to local to test with Avro tools:
+
+```bash
+hadoop fs -copyToLocal /topics/test_hdfs/partition=0/test_hdfs+0+0000000000+0000000002.avro \
+/tmp/test_hdfs+0+0000000000+0000000002.avro
+```
+
+Test with Avro Tools:
+
+```bash
+java -jar avro-tools-1.8.2.jar tojson /tmp/test_hdfs+0+0000000000+0000000002.avro
+```
