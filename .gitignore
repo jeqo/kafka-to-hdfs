@@ -3,3 +3,8 @@ target/
 # Intellij
 .idea/
 *.iml
+
+# VS Code
+.classpath
+.settings/
+.project

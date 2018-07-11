@@ -9,7 +9,7 @@ Frameworks to evaluate:
 
 ## Kafka HDFS Connector
 
-> Source: https://docs.confluent.io/current/connect/connect-hdfs/docs/hdfs_connector.html
+> Source: <https://docs.confluent.io/current/connect/connect-hdfs/docs/hdfs_connector.html>
 
 This Connector has been implemented and is supported by Confluent.
 
@@ -105,4 +105,6 @@ java -jar avro-tools-1.8.2.jar tojson /tmp/test_hdfs+0+0000000000+0000000002.avr
 
 ## Alpakka HDFS Connector
 
-> Source: https://developer.lightbend.com/docs/alpakka/current/hdfs.html
+> Source: <https://developer.lightbend.com/docs/alpakka/current/hdfs.html>
+
+[WIP]
